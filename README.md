@@ -1,73 +1,112 @@
-# Xử dụng công cụ nào để phát triển dự án Front-End
+# Mốt số đặc điểm khác của ReactJS
 
-### Quyết định sử dụng Vite, Yarn hay npm trong dự án front-end phụ thuộc vào nhiều yếu tố, bao gồm yêu cầu cụ thể của dự án, sự thoải mái và sự quen thuộc của nhóm phát triển. Dưới đây là một số điểm mạnh và yếu của từng công cụ:
+### 1. Components
+- Trong ReactJS, một Component là một phần tử UI độc lập và tái sử dụng, có thể được xem là đoạn mã UI đóng gói và tái sử dụng.
+- Tổ chức thành các khối nhỏ để dễ quản lý hơn
+- [Có 2 loại chính của Compotent trong React](https://viblo.asia/p/so-sanh-class-components-va-functional-components-trong-reactjs-maGK7reO5j2):
+  -  Funtional Component
+  -  Class Component
 
-1.  **Vite**:
+### 2. Import và Export 
+- Trong React 'Import' và 'Export' là cú pháp của JS ES6 được sử dụng để nhập (Import) và xuất (Export) các Modules, các components hoặc các giá trị khác từ một tệp (file) JS sang một tệp khác. 
 
-- Mục đích: Vite (tiếng Pháp có nghĩa là "nhanh") là một công cụ phát triển front-end được xây dựng để cung cấp trải nghiệm phát triển nhanh với sự hỗ trợ tốt cho Vue.js và React.
+**Import**
 
-- Ưu điểm:
+- Import Default:
 
-  - Tốc độ khởi động nhanh: Vite sử dụng [ESM (EcmaScript Modules)](https://nodejs.org/api/esm.html) và tận dụng HTTP/2 để có tốc độ khởi động và làm tải rất nhanh.
-  - Hỗ trợ Vue và React: Vite được thiết kế để tích hợp sâu với Vue.js, và từ phiên bản 2.0 trở đi, hỗ trợ cả React.
-  - [Hot Module Replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/): Hỗ trợ HMR giúp cập nhật nhanh chóng các thay đổi trong quá trình phát triển mà không cần làm tải lại toàn bộ trang.
+```javascript
+import MyComponent from './MyComponent';
+```
+- Import Multiple:
 
-- Nhược điểm:
+```javascript
+import { Component1, Component2 } from './MyComponents';
+```
+- Import All:
+```javascript
+import { Component1, Component2 } from './MyComponents';
+```
 
-  - Cộng đồng nhỏ hơn so với webpack: Mặc dù đang ngày càng trở nên phổ biến, nhưng cộng đồng của Vite vẫn nhỏ hơn so với webpack.
-2. **Yarn**:
+**Export**
 
-- Mục đích: Yarn là một trình quản lý gói (package manager) cho JavaScript, thay thế cho npm, với mục tiêu là cải thiện hiệu suất và đồng bộ các dependencies hiệu quả hơn.
+- Export Default:
+```javascript
+const MyComponent = () => {
+  // ...
+};
 
-- Ưu điểm:
+export default MyComponent;
+```
+- Export Named:
+```javascript
+export const Component1 = () => {
+  // ...
+};
 
-  - [Yarn Plug'n'Play (PnP)](https://yarnpkg.com/features/pnp): Tính năng này giúp giảm thời gian tải dependencies bằng cách tránh việc tạo ra các symbolic links và sử dụng một cách tiếp cận khác biệt.
-  - [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/): Hỗ trợ quản lý dự án lớn với nhiều packages, giúp làm cho việc phát triển và duy trì codebase dễ dàng hơn.
+export const Component2 = () => {
+  // ...
+};
+```
+- Export Aliases:
+```javascript
+const Component1 = () => {
+  // ...
+};
 
-- Nhược điểm:
+const Component2 = () => {
+  // ...
+};
 
-Vấn đề tương thích: Một số dự án cũ hơn hoặc các packages chưa cập nhật có thể gặp vấn đề tương thích với Yarn.
+export { Component1 as C1, Component2 as C2 };
+```
 
-3. **npm**:
+- Export All as Namespace::
+```javascript
+export * from './MyComponents';
+```
+- Export All:
+```javascript
+const Component1 = () => {
+  // ...
+};
 
-- Mục đích: npm (Node Package Manager) là trình quản lý gói mặc định cho Node.js và được sử dụng rộng rãi trong cộng đồng JavaScript.
+const Component2 = () => {
+  // ...
+};
 
-- Ưu điểm:
+export * as MyComponents from './MyComponents';
+```
 
-  - Phổ biến và được sử dụng rộng rãi: npm là trình quản lý gói phổ biến và được nhiều dự án sử dụng.
-  - Hỗ trợ tốt cho việc quản lý dependencies: npm có một cộng đồng lớn và hỗ trợ tốt cho việc quản lý dependencies và scripts.
-Nhược điểm:
+***Lưu ý: rằng cách bạn import và export cũng phụ thuộc vào việc sử dụng CommonJS hoặc ECMAScript modules, và cách bạn cấu hình môi trường của mình (chẳng hạn như sử dụng [Babel]***
 
-  - Tải dependencies có thể chậm hơn so với Yarn: Trong một số trường hợp, quá trình tải dependencies có thể mất thời gian hơn so với Yarn.
-  - Không có Yarn Plug'n'Play mặc định: npm không có tính năng Plug'n'Play như Yarn.
+### 2. JSX
+- JSX là một phần của React, là một cú pháp mở rộng của JavaScript để mô tả giao diện người dùng. JSX cho phép bạn viết mã HTML giống như trong JavaScript, giúp đơn giản hóa việc xây dựng và duy trì các thành phần UI trong React.
 
-*** 
-***Ghi chú:***
- 
-***Lưu ý: Bên trên là sơ lược mọi người có thể tìm hiểu thêm trong project này ta sẽ dùng "Vite"***
+- JSX có một số đặc điểm quan trọng:
 
-# Cấu trúc dự án
+  - **HTML-Like Syntax**: JSX giống với cú pháp HTML, giúp phát triển giao diện người dùng trở nên dễ đọc và hiểu hơn.
+  ```javascript
+  const element = <h1>Hello, JSX!</h1>;
+  ```
+  - **JavaScript Expressions**: Bạn có thể tính toán giá trị trong JSX bằng cách sử dụng biểu thức JavaScript bên trong nó.
+   ```javascript
+  const name = "World";
+  const element = <h1>Hello, {name}!</h1>;
+  ```
+  - **React Elements:** JSX được biên dịch thành React elements, giúp React hiểu cách cập nhật và render DOM hiệu quả.
+   ```javascript
+  import App from './App.jsx'
 
-## My React Vite App
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  )
+  ```
 
-### Cấu Trúc Thư Mục
+***Tại sao lại cần JSX trong React:***
+- Đơn Giản Hóa Việc Viết Code: JSX giúp làm giảm độ phức tạp của việc viết mã nguồn khi bạn làm việc với giao diện người dùng, đặc biệt là khi so sánh với việc sử dụng các phương thức JavaScript để tạo các phần tử HTML.
 
-- **`public/`:** Thư mục chứa các tệp tĩnh không biên dịch, bao gồm trang HTML chính.
+- Tích Hợp JavaScript và HTML: JSX cho phép tích hợp JavaScript và HTML trong cùng một cú pháp, giúp dễ dàng quản lý logic và hiển thị UI trong cùng một thành phần.
 
-- **`src/`:** Thư mục chứa mã nguồn của ứng dụng.
-
-  - **`components/`:** Chứa các thành phần tái sử dụng như Header và Footer.
-
-  - **`pages/`:** Chứa các thành phần đại diện cho các trang cụ thể của ứng dụng, chẳng hạn như Home và About.
-
-  - **`App.jsx`:** Component chính của ứng dụng, nơi bạn gọi các thành phần khác và xây dựng cấu trúc của ứng dụng.
-
-  - **`index.jsx`:** Tệp này là nơi bạn kích hoạt ứng dụng React bằng cách gọi ReactDOM.render.
-
-- **`.gitignore`:** Tệp cấu hình Git để loại bỏ các tệp và thư mục không mong muốn khi đẩy mã nguồn lên repository.
-
-- **`package.json`:** Tệp cấu hình npm, chứa danh sách các dependencies, scripts và cấu hình khác cho dự án.
-
-- **`README.md`:** Tệp mô tả dự án, chứa thông tin hướng dẫn cài đặt, sử dụng, và mô tả cấu trúc dự án.
-
-- **`vite.config.js`:** Nếu bạn cần tùy chỉnh cấu hình Vite, bạn có thể sử dụng tệp cấu hình này.
+- Tăng Hiệu Suất: JSX giúp React hiểu rõ cách cập nhật và render DOM một cách hiệu quả hơn bằng cách sử dụng React elements.
