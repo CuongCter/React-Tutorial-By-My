@@ -24,7 +24,7 @@ import { Component1, Component2 } from './MyComponents';
 ```
 - Import All:
 ```javascript
-import { Component1, Component2 } from './MyComponents';
+import * as myModule from './myModule';
 ```
 
 **Export**
