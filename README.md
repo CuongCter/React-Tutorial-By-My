@@ -57,13 +57,13 @@ Ví dụ: bạn có thể sử dụng <div>:
 - Thẻ trống này được gọi là Fragment. Phân đoạn cho phép bạn nhóm mọi thứ mà không để lại bất kỳ dấu vết nào trong cây HTML của trình duyệt.
 
 
-### Tại sao cần phải bịc nhiều thẻ JSX 
+***Tại sao cần phải bọc nhiều thẻ JSX***
 
 - *JSX trông giống như HTML, nhưng bên trong nó được chuyển đổi thành các đối tượng JavaScript đơn giản. Bạn không thể trả về hai đối tượng từ một hàm mà không gói chúng vào một mảng. Điều này giải thích tại sao bạn cũng không thể trả về hai thẻ JSX mà không gói chúng vào một thẻ khác hoặc một Đoạn.*
 
 2. **Đóng tất cả các thẻ**
 
-- JSX yêu cầu các thẻ phải được đóng rõ ràng: các thẻ tự đóng như <img/> và các thẻ gói như <li>phải được viết dưới dạng <li>oranges</li>.
+- JSX yêu cầu các thẻ phải được đóng rõ ràng: các thẻ tự đóng như ```<img/> ```và các thẻ gói như``` <li> ```phải được viết dưới dạng ```<li>```oranges```</li>```.
 
 Đây là hình ảnh và danh sách các mục trông như thế nào:
 ```javascript
