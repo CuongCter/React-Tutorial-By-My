@@ -6,11 +6,11 @@
 
 - Web đã được xây dựng trên HTML, CSS và JavaScript. Trong nhiều năm, các nhà phát triển web giữ nội dung bằng HTML, thiết kế bằng CSS và logic bằng JavaScript—thường ở các tệp riêng biệt! Nội dung được đánh dấu bên trong HTML trong khi logic của trang tồn tại riêng biệt trong JavaScript:
 
-![HTML-JS](/jsx1.jpg)
+![HTML-JS](./public/jsx1.jpg)
 
 - Nhưng khi Web trở nên tương tác hơn, logic ngày càng quyết định nội dung. JavaScript chịu trách nhiệm về HTML! Đây là lý do tại sao trong React, logic hiển thị và đánh dấu tồn tại cùng một nơi—các thành phần.
 
-![Thành phần phản ứng](/jsx2.jpg)
+![Thành phần phản ứng](./public/jsx2.jpg)
 
 - Việc kết hợp logic kết xuất và đánh dấu của một nút sẽ đảm bảo rằng chúng luôn đồng bộ với nhau trong mỗi lần chỉnh sửa. Ngược lại, các chi tiết không liên quan, chẳng hạn như đánh dấu của nút và đánh dấu của thanh bên, được tách biệt với nhau, giúp việc tự thay đổi một trong hai chi tiết đó an toàn hơn.
 
