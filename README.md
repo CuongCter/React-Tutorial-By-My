@@ -1,112 +1,105 @@
-# Mốt số đặc điểm khác của ReactJS
+# JSX
 
-### 1. Components
-- Trong ReactJS, một Component là một phần tử UI độc lập và tái sử dụng, có thể được xem là đoạn mã UI đóng gói và tái sử dụng.
-- Tổ chức thành các khối nhỏ để dễ quản lý hơn
-- [Có 2 loại chính của Compotent trong React](https://viblo.asia/p/so-sanh-class-components-va-functional-components-trong-reactjs-maGK7reO5j2):
-  -  Funtional Component
-  -  Class Component
+- JSX là một phần mở rộng cú pháp cho JavaScript cho phép bạn viết đánh dấu giống HTML bên trong tệp JavaScript. Mặc dù có nhiều cách khác để viết các thành phần, nhưng hầu hết các nhà phát triển React đều thích sự đơn giản của JSX và hầu hết các cơ sở mã đều sử dụng nó.
 
-### 2. Import và Export 
-- Trong React 'Import' và 'Export' là cú pháp của JS ES6 được sử dụng để nhập (Import) và xuất (Export) các Modules, các components hoặc các giá trị khác từ một tệp (file) JS sang một tệp khác. 
+## JSX: Đưa đánh dấu vào JavaScript
 
-**Import**
+- Web đã được xây dựng trên HTML, CSS và JavaScript. Trong nhiều năm, các nhà phát triển web giữ nội dung bằng HTML, thiết kế bằng CSS và logic bằng JavaScript—thường ở các tệp riêng biệt! Nội dung được đánh dấu bên trong HTML trong khi logic của trang tồn tại riêng biệt trong JavaScript:
 
-- Import Default:
+![HTML-JS](/jsx1.jpg)
+
+- Nhưng khi Web trở nên tương tác hơn, logic ngày càng quyết định nội dung. JavaScript chịu trách nhiệm về HTML! Đây là lý do tại sao trong React, logic hiển thị và đánh dấu tồn tại cùng một nơi—các thành phần.
+
+![Thành phần phản ứng](/jsx2.jpg)
+
+- Việc kết hợp logic kết xuất và đánh dấu của một nút sẽ đảm bảo rằng chúng luôn đồng bộ với nhau trong mỗi lần chỉnh sửa. Ngược lại, các chi tiết không liên quan, chẳng hạn như đánh dấu của nút và đánh dấu của thanh bên, được tách biệt với nhau, giúp việc tự thay đổi một trong hai chi tiết đó an toàn hơn.
+
+### Chú ý 
+
+- *JSX và React là hai thứ riêng biệt. Chúng thường được sử dụng cùng nhau nhưng bạn có thể  sử dụng chúng độc lập với nhau. JSX là một phần mở rộng cú pháp, trong khi React là thư viện JavaScript.*
+
+## Các quy tắc của JSX
+
+1. **Trả về một phần tử gốc**
+- Để trả về nhiều phần tử từ một thành phần, hãy bọc chúng bằng một thẻ cha duy nhất.
+
+Ví dụ: bạn có thể sử dụng <div>:
 
 ```javascript
-import MyComponent from './MyComponent';
+<div>
+  <h1>Hedy Lamarr's Todos</h1>
+  <img 
+    src="https://i.imgur.com/yXOvdOSs.jpg" 
+    alt="Hedy Lamarr" 
+    class="photo"
+  >
+  <ul>
+    ...
+  </ul>
+</div>
 ```
-- Import Multiple:
+
+- Nếu bạn không muốn thêm phần bổ sung <div> vào đánh dấu của mình, bạn có thể viết <>và </> thay vào đó: 
 
 ```javascript
-import { Component1, Component2 } from './MyComponents';
+<>
+  <h1>Hedy Lamarr's Todos</h1>
+  <img 
+    src="https://i.imgur.com/yXOvdOSs.jpg" 
+    alt="Hedy Lamarr" 
+    class="photo"
+  >
+  <ul>
+    ...
+  </ul>
+</>
 ```
-- Import All:
+- Thẻ trống này được gọi là Fragment. Phân đoạn cho phép bạn nhóm mọi thứ mà không để lại bất kỳ dấu vết nào trong cây HTML của trình duyệt.
+
+
+### Tại sao cần phải bịc nhiều thẻ JSX 
+
+- *JSX trông giống như HTML, nhưng bên trong nó được chuyển đổi thành các đối tượng JavaScript đơn giản. Bạn không thể trả về hai đối tượng từ một hàm mà không gói chúng vào một mảng. Điều này giải thích tại sao bạn cũng không thể trả về hai thẻ JSX mà không gói chúng vào một thẻ khác hoặc một Đoạn.*
+
+2. **Đóng tất cả các thẻ**
+
+- JSX yêu cầu các thẻ phải được đóng rõ ràng: các thẻ tự đóng như <img/> và các thẻ gói như <li>phải được viết dưới dạng <li>oranges</li>.
+
+Đây là hình ảnh và danh sách các mục trông như thế nào:
 ```javascript
-import * as myModule from './myModule';
+<>
+  <img 
+    src="https://i.imgur.com/yXOvdOSs.jpg" 
+    alt="Hedy Lamarr" 
+    class="photo"
+   />
+  <ul>
+    <li>Invent new traffic lights</li>
+    <li>Rehearse a movie scene</li>
+    <li>Improve the spectrum technology</li>
+  </ul>
+</>
 ```
+3. **Quy tắc CamelCase**
 
-**Export**
+- JSX biến thành JavaScript và các thuộc tính được viết bằng JSX trở thành khóa của các đối tượng JavaScript. Trong các thành phần của riêng bạn, bạn thường muốn đọc các thuộc tính đó thành các biến. Nhưng JavaScript có những hạn chế về tên biến. Ví dụ: tên của họ không được chứa dấu gạch ngang hoặc là các từ dành riêng như class.
 
-- Export Default:
+- Đây là lý do tại sao trong React, nhiều thuộc tính HTML và SVG được viết bằng CamelCase. Ví dụ: thay vì stroke-width bạn sử dụng strokeWidth. Vì class là một từ dành riêng nên trong React bạn viết className thay thế, được đặt tên theo thuộc tính DOM tương ứng :
+
 ```javascript
-const MyComponent = () => {
-  // ...
-};
 
-export default MyComponent;
-```
-- Export Named:
-```javascript
-export const Component1 = () => {
-  // ...
-};
-
-export const Component2 = () => {
-  // ...
-};
-```
-- Export Aliases:
-```javascript
-const Component1 = () => {
-  // ...
-};
-
-const Component2 = () => {
-  // ...
-};
-
-export { Component1 as C1, Component2 as C2 };
+<img 
+  src="https://i.imgur.com/yXOvdOSs.jpg" 
+  alt="Hedy Lamarr" 
+  className="photo"
+/>
 ```
 
-- Export All as Namespace::
-```javascript
-export * from './MyComponents';
-```
-- Export All:
-```javascript
-const Component1 = () => {
-  // ...
-};
+### Cạm bẫy
 
-const Component2 = () => {
-  // ...
-};
+- *Vì lý do lịch sử aria-** và *data-** *các thuộc tính được viết dưới dạng HTML với dấu gạch ngang.*
 
-export * as MyComponents from './MyComponents';
-```
+### Sử dụng Trình chuyển đổi JSX
 
-***Lưu ý: rằng cách bạn import và export cũng phụ thuộc vào việc sử dụng CommonJS hoặc ECMAScript modules, và cách bạn cấu hình môi trường của mình (chẳng hạn như sử dụng [Babel]***
+- [Sử dụng trình chuyển đổi](https://transform.tools/html-to-jsx) để dịch HTML và SVG hiện có của mình sang JSX. Các trình chuyển đổi rất hữu ích trong thực tế, nhưng vẫn đáng để hiểu những gì đang diễn ra để bạn có thể thoải mái tự viết JSX.
 
-### 2. JSX
-- JSX là một phần của React, là một cú pháp mở rộng của JavaScript để mô tả giao diện người dùng. JSX cho phép bạn viết mã HTML giống như trong JavaScript, giúp đơn giản hóa việc xây dựng và duy trì các thành phần UI trong React.
-
-- JSX có một số đặc điểm quan trọng:
-
-  - **HTML-Like Syntax**: JSX giống với cú pháp HTML, giúp phát triển giao diện người dùng trở nên dễ đọc và hiểu hơn.
-  ```javascript
-  const element = <h1>Hello, JSX!</h1>;
-  ```
-  - **JavaScript Expressions**: Bạn có thể tính toán giá trị trong JSX bằng cách sử dụng biểu thức JavaScript bên trong nó.
-   ```javascript
-  const name = "World";
-  const element = <h1>Hello, {name}!</h1>;
-  ```
-  - **React Elements:** JSX được biên dịch thành React elements, giúp React hiểu cách cập nhật và render DOM hiệu quả.
-   ```javascript
-  import App from './App.jsx'
-
-  ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  )
-  ```
-
-***Tại sao lại cần JSX trong React:***
-- Đơn Giản Hóa Việc Viết Code: JSX giúp làm giảm độ phức tạp của việc viết mã nguồn khi bạn làm việc với giao diện người dùng, đặc biệt là khi so sánh với việc sử dụng các phương thức JavaScript để tạo các phần tử HTML.
-
-- Tích Hợp JavaScript và HTML: JSX cho phép tích hợp JavaScript và HTML trong cùng một cú pháp, giúp dễ dàng quản lý logic và hiển thị UI trong cùng một thành phần.
-
-- Tăng Hiệu Suất: JSX giúp React hiểu rõ cách cập nhật và render DOM một cách hiệu quả hơn bằng cách sử dụng React elements.
