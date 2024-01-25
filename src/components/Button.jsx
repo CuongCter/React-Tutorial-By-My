@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({children}) => {
   return (
-    <div>
-        <button>Click</button>
-    </div>
+    <button>
+        {children}
+    </button>
   )
 }
 

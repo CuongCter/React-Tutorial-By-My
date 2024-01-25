@@ -1,6 +1,7 @@
 
 import './App.css'
 import Button from './components/Button'
+import ParentComponents from './components/ParentComponents'
 import Profile from './components/Profile'
 
 function App() {
@@ -9,13 +10,10 @@ function App() {
     <>
      <section>
       <h1>Amazing scientists</h1>
+      <Profile color={`red`}/>
       <Profile/>
-      <Profile/>
-      <Profile/>
-      <Button/>
-      <Button/>
-      <Button/>
-      <Button/>
+      <ParentComponents/>
+      <Button>Click hello</Button>
     </section>
     </>
   )

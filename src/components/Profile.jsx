@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Profile = () => {
+const Profile = ({color}) => {
   return (
-    <div>Profile Component</div>
+    <div style={{backgroundColor: `${color}`}}>Profile Component </div>
   )
 }
 

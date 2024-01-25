@@ -1,38 +1,7 @@
-# Components
+# Props
 
-- là một trong những khái niệm cốt lõi của React. Chúng là nền tảng để bạn xây dựng giao diện người dùng (UI), khiến chúng trở thành nơi hoàn hảo để bắt đầu hành trình React của bạn!
+- Các thành phần React Sử dụng props để giao tiếp với nhau. Mỗi thành phần cha có thể chuyển một số thống tin đến các thành phần con của nó bằng cách cung cấp cho chúng các props. Có thể chuyển bất kỳ giá trị JS nào qua chúng, bao gồm các đối tượng, mảng và hàm.
 
-```javascript
-function Profile() {
-  return (
-    <img
-      src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
-    />
-  );
-}
+# Props children
 
-export default function Gallery() {
-  return (
-    <section>
-      <h1>Amazing scientists</h1>
-      <Profile />
-      <Profile />
-      <Profile />
-    </section>
-  );
-}
-```
-
-# Importing and Exporting Components
-
-```javascript
-import Gallery from './Gallery.js';
-import { Profile } from './Gallery.js';
-
-export default function App() {
-  return (
-    <Profile />
-  );
-}
-```
+- Trong ReactJS, "props children" thường là một thuộc tính đặc biệt trong các component. Nó cho phép bạn truyền vào một hoặc nhiều thành phần con (children) giữa các thẻ mở và đóng của một component trong JSX.
